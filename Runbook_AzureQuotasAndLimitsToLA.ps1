@@ -36,6 +36,7 @@ catch {
 
 "-------- Retrieving Compute quotas and usage --------"
 
+# Modify the location if needed
 $Location = "westeurope"
 
 # Retrieve Compute quota
