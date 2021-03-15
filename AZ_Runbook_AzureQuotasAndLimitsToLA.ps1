@@ -1,25 +1,24 @@
 
 <#
     .DESCRIPTION
-        Runbook which gets all the ARM resources type quotas and limits in the subscription using the Run As Account (Service Principal) and pushes the data to a Log analytics workspace
+    Runbook for getting all the ARM resources type quotas and limits in all subscriptions using the Run As Account (Service Principal) and pushes the data to a Log analytics workspace
         -	Loop all subscriptions that the SP has access to
         -	Retrieve quotas from all regions that have resources deployed (resource graph to the rescue!)
         -	Includes role assignments
         -	Add new columns to help with data manipulation:
-        	    - "QuotaType"
-        	    - "SubscriptionId"
-        	    - "SubscriptionName"
-        	    - "Location"
-    
-    .REQUIREMENTS
-    -	Az Modules
+                - "QuotaType"
+                - "SubscriptionId"
+                - "SubscriptionName"
+                - "Location"
+                
+     Required Az Modules:
         -	Az.Accounts
         -	Az.Compute
         -	Az.Network
         -	Az.ResourceGraph
         -	Az.Resources
         -	Az.Storage
-    -	The SP requires Directory.Read.All in AAD Graph API due to way the Get-AzRoleAssignment works (https://github.com/Azure/azure-powershell/issues/13573)
+    The SP requires Directory.Read.All in AAD Graph API due to way the Get-AzRoleAssignment works (https://github.com/Azure/azure-powershell/issues/13573)
 
     
     .NOTES
