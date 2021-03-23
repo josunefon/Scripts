@@ -95,7 +95,7 @@ foreach ($subscription in $subscriptions) {
         $AllQuotas += $NetworkQuota
     }
     "-------- Retrieving Role Assignments usage for $($subscription.Name) --------"
-    $RoleAssignments = (Get-AzRoleAssignment | Where-Object {$_.Scope -Like "/subscriptions/$($subscription.Id)*"}).count
+    $RoleAssignments = (Get-AzRoleAssignment -Scope "/subscriptions/$($subscription.Id)" | Where-Object {$_.Scope -Like "/subscriptions/$($subscription.Id)*"}).count
     [int]$PercQuota = $roleAssignments/$RoleAssignmentsQuotaValue*100
     $RoleAssignmentsQuota = New-Object -TypeName psobject
     $RoleAssignmentsQuota | Add-Member -NotePropertyName "Name" -NotePropertyValue "Role Assignments"
