@@ -56,6 +56,7 @@ $AllQuotas = @()
 $RoleAssignmentsQuotaValue = 2000
 
 foreach ($subscription in $subscriptions) {
+    $null = Set-AzContext -SubscriptionId $subscription.id
     $locations = Search-AzGraph -Query "Resources | where subscriptionId == '$($subscription.Id)' | distinct location"
     foreach ($location in $locations.location) {
         if ($location -eq "global") {
