@@ -1,6 +1,15 @@
-Connect-Azaccount
+<#
+    .DESCRIPTION
+    Script to retrieve all teh SPNs with expired credentials
+    
+    .NOTES
+        AUTHOR: Jordi Sune Fontanals
+        LASTEDIT: March 2, 2022
+#>
 
 $Watch = [System.Diagnostics.Stopwatch]::StartNew()
+
+Connect-Azaccount
 
 [datetime]$currentDate = Get-date -Format "dd/MM/yyyy"
 $totalSPNS = (Get-AzADServicePrincipal).count
@@ -27,7 +36,7 @@ $allspn| Foreach-Object {
 }
 
 write-host "Total expired credentials: " $cred.count
-#$cred > "SPNExpiredCredentials.json"
+$cred > "SPNExpiredCredentials.json"
 
 Write-Host -foregroundcolor Yellow "[SPN Secret Expiration check] Took $($Watch.Elapsed.TotalMinutes) minutes"
 write-host "_________________________________"
