@@ -3,9 +3,9 @@ Connect-Azaccount
 $Watch = [System.Diagnostics.Stopwatch]::StartNew()
 
 [datetime]$currentDate = Get-date -Format "dd/MM/yyyy"
-$totalSPNS = 30 #(Get-AzADServicePrincipal).count
+$totalSPNS = (Get-AzADServicePrincipal).count
 write-host "SPN to review: " $totalSPNS
-$allspn = Get-AzADServicePrincipal -first 30
+$allspn = Get-AzADServicePrincipal #-first 30
 $cred= @()
 $allspn| Foreach-Object {
     $spn = $_
