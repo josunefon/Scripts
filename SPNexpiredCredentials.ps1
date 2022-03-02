@@ -1,6 +1,6 @@
 <#
     .DESCRIPTION
-    Script to retrieve all teh SPNs with expired credentials
+    Script to retrieve all the SPNs with expired credentials
     
     .NOTES
         AUTHOR: Jordi Sune Fontanals
