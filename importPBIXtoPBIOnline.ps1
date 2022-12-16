@@ -7,6 +7,7 @@
 # Reference: https://docs.microsoft.com/en-us/powershell/module/powerbi/get-powerbireport?view=powerbi-ps
 # Reference: https://docs.microsoft.com/en-us/powershell/module/powerbi/new-powerbigroup?view=powerbi-ps
 
+Install-Module -Name MicrosoftPowerBIMgmt  
 
 Connect-PowerBIServiceAccount | Out-Null
 
